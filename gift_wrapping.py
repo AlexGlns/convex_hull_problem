@@ -1,4 +1,3 @@
-import math
 import random
 import myfunctions
 
@@ -27,7 +26,7 @@ while True:
         break;
 
 print("convex hull points : ",convex_hull)
-myfunctions.print_plot(coordinates,convex_hull)
+myfunctions.print_plot(coordinates,convex_hull,True)
 
 
 

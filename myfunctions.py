@@ -41,7 +41,7 @@ def side_from_line(p1,p2, p):
     return 0
 
 # show all coordinates and draws convex hull with those coordinates 
-def print_plot(coordinates,hull):
+def print_plot(coordinates,hull,final = False):
     x =[]
     y = []
     
@@ -54,8 +54,9 @@ def print_plot(coordinates,hull):
         x.append(hull[i][0])
         y.append(hull[i][1])
 
-    x.append(hull[0][0])
-    y.append(hull[0][1])
+    if final:
+        x.append(hull[0][0])
+        y.append(hull[0][1])
     plt.plot(x,y,color='red',marker='o',markerfacecolor='red')
 
     # setting x and y axis range

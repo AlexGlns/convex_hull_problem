@@ -97,7 +97,7 @@ def main():
     convex_hull = divide_and_conquer(coordinates)
     print("convex hull points : ", convex_hull)
 
-    myfunctions.print_plot(coordinates,convex_hull)
+    myfunctions.print_plot(coordinates,convex_hull,True)
 
 if __name__ == "__main__":
     main()
