@@ -1,7 +1,8 @@
 import random
 import myfunctions
+import time
 
-
+start = time.time()
 coordinates = [(random.randint(0,100),random.randint(0,100)) for i in range(80)]
 coordinates.sort(key = lambda x: [x[0],x[1]])
 leftmost_point = coordinates[0]
@@ -26,6 +27,8 @@ while True:
         break;
 
 print("convex hull points : ",convex_hull)
+end = time.time()
+print("Elapsed time: ", end-start)
 myfunctions.print_plot(coordinates,convex_hull,True)
 
 

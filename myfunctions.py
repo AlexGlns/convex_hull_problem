@@ -17,21 +17,8 @@ def distance_from_line(a,b,point):
     c = a[1] - l * a[0]               # c == b
 
     return abs(l * point[0] -1 * point[1] + c) / math.sqrt(l**2 + (-1)**2)
-    # return abs((p[1] - p1[1]) * (p2[0] - p1[0]) -
-    #         (p2[1] - p1[1]) * (p[0] - p1[0]))
 
 def side_from_line(p1,p2, p):    
-    # l = (p2[1] - p1[1]) / (p2[0] - p1[0])
-    # c = p1[1] - l * p1[0]
-
-    # # if y > l*x+ c then it is above line 
-    # if (point[1] > l*(p1[0] + c)):
-    #     return 1;
-    # # if y < l*x+ c then it is below line 
-    # elif point[1] < l*(p1[0]) + c:
-    #     return -1
-    
-    # return 0
     val = (p[1] - p1[1]) * (p2[0] - p1[0]) - (p2[1] - p1[1]) * (p[0] - p1[0])
  
     if val > 0:

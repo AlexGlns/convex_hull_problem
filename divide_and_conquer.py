@@ -1,6 +1,7 @@
 import random
 import myfunctions
 from grahams_alg import grahamHull
+import time
 
 # find upper and down bridge of 2 convex hulls
 def merge(a,b):
@@ -90,32 +91,19 @@ def divide_and_conquer(coordinates):
 
 
 def main():
-    coordinates = [(random.randint(0,100),random.randint(0,100)) for i in range(80)]
+    start = time.time()
+    coordinates = [(random.uniform(0,100),random.uniform(0,100)) for i in range(80)]
     coordinates.sort(key = lambda x: [x[0],x[1]])
 
     # print("Sorted points : ",coordinates)
     convex_hull = divide_and_conquer(coordinates)
     print("convex hull points : ", convex_hull)
+    end = time.time()
+    print("Elapsed time: ", end-start)
 
     myfunctions.print_plot(coordinates,convex_hull,True)
 
 if __name__ == "__main__":
     main()
-
-# coordinates = []
-# coordinates.append((-10,5))
-# coordinates.append((-2,-10))
-# coordinates.append((1,7))
-# coordinates.append((3,4))
-# coordinates.append((5,6))
-# coordinates.append((9,3))
-# coordinates.append((11,8))
-# coordinates.append((15,-11))
-# coordinates.append((18,-3))
-# coordinates.append((24,-8))
-
-
-
-
 
 

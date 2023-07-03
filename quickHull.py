@@ -1,5 +1,6 @@
 import random
 import myfunctions
+import time
 
 hull = set()
 
@@ -21,33 +22,21 @@ def quickHull(a,b,coordinates, side):
     quickHull(coordinates[ind],a,coordinates,-myfunctions.side_from_line(coordinates[ind],a,b))
     quickHull(coordinates[ind],b,coordinates,-myfunctions.side_from_line(coordinates[ind],b,a))
 
-    print(hull, side)
         
 
 def main():
+    start = time.time()
     coordinates = []
-    coordinates.append((-10,5))
-    coordinates.append((-2,-10))
-    coordinates.append((1,7))
-    coordinates.append((3,4))
-    coordinates.append((5,6))
-    coordinates.append((9,3))
-    coordinates.append((11,8))
-    coordinates.append((15,-11))
-    coordinates.append((18,-3))
-    coordinates.append((24,-8))
-
+    coordinates = [(random.uniform(0,100),random.uniform(0,100)) for i in range(80)]
+    coordinates.sort(key = lambda x: [x[0],x[1]])
     min_x = coordinates[0]
     max_x = coordinates[len(coordinates) - 1]
-
-    #above, below = myfunctions.side_from_line(max_x,min_x,coordinates)
-    # print(above,below)
-
-    # print(myfunctions.side_from_line(max_x,min_x,max_x))
-    
+ 
     quickHull(max_x,min_x, coordinates, 1)
     quickHull(max_x,min_x, coordinates, -1)
-    print(hull)
+    print("Convex Hull points :",hull)
+    end = time.time()
+    print("Elapsed time: ", end-start)
 
 if __name__ == "__main__":
     main()

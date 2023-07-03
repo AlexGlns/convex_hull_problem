@@ -1,5 +1,6 @@
 import random
 import myfunctions
+import time
 
 def grahamHull(coordinates,visuallization=False):
 
@@ -33,15 +34,17 @@ def grahamHull(coordinates,visuallization=False):
     ldown.pop()
     ldown.pop(0)
 
-    #print("Convex hull : " , lup + ldown)
     return(lup + ldown)
 
 def main():
-    coordinates = [(random.randint(0,100),random.randint(0,100)) for i in range(80)]
+    start = time.time()
+    coordinates = [(random.uniform(0,100),random.uniform(0,100)) for i in range(80)]
     coordinates.sort(key = lambda x: [x[0],x[1]])
 
-    hull = grahamHull(coordinates,True)
+    hull = grahamHull(coordinates)
     print("points of convex hull : " , hull)
+    end = time.time()
+    print("Elapsed time: ", end-start)
     myfunctions.print_plot(coordinates,hull,True)
 
 
