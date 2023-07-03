@@ -1,17 +1,15 @@
 import matplotlib.pyplot as plt
 from scipy.spatial import Voronoi, voronoi_plot_2d, Delaunay
 import numpy as np
+import time
 
 
-#initialize array with 20 random points 
-points = np.random.randint(20, size=(100,2))
-# plt.scatter(points[:,0], points[:,1])
+#initialize array with 20 random points
+start = time.time()
+points = np.random.randint(20, size=(30,2))
 vor = Voronoi(points)
 tri = Delaunay(points)
 plt.triplot(points[:,0], points[:,1], tri.simplices)        # plot triangles
-# plt.plot(points[:,0], points[:,1], 'o')
-
-# fig = voronoi_plot_2d(vor)
 
 plt.plot(points[:,0],points[:,1],'o')                       # plot points
 plt.plot(vor.vertices[:,0], vor.vertices[:,1],'*')          # plot vertices
@@ -37,4 +35,6 @@ for pointidx, simplex in zip(vor.ridge_points, vor.ridge_vertices):
         far_point = vor.vertices[i] + np.sign(np.dot(midpoint - center, n)) * n * 100
         plt.plot([vor.vertices[i,0], far_point[0]],
                  [vor.vertices[i,1], far_point[1]], 'k--')
+end = time.time()
+print("Elapsed time: ", end-start)
 plt.show()
